@@ -38,7 +38,10 @@ document.getElementById('registerForm').addEventListener('submit', function(e) {
         },
         body: `username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`
     })
-    .then(response => response.json())
+    .then(response => {
+        console.log('Raw response:', response);
+        return response.json();
+    })
     .then(data => {
         console.log('Registration response:', data);
         if (data.success) {
