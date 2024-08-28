@@ -16,8 +16,9 @@ if ($user = $result->fetch_assoc()) {
         $_SESSION['username'] = $username;
         echo json_encode(['success' => true]);
     } else {
-        echo json_encode(['success' => false]);
+        echo json_encode(['success' => false, 'error' => 'Invalid password']);
     }
 } else {
-    echo json_encode(['success' => false]);
+    echo json_encode(['success' => false, 'error' => 'User not found']);
 }
+$stmt->close();

@@ -6,7 +6,7 @@ if (!isset($_SESSION['user_id'])) {
 }
 ?>
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,7 +20,7 @@ if (!isset($_SESSION['user_id'])) {
         <p>Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?>!</p>
         <div id="game-board" class="row"></div>
         <p id="message" class="mt-3"></p>
-        <button id="restart" class="btn btn-primary mt-3">Rematch</button>
+        <button id="restart" class="btn btn-primary mt-3">Restart</button>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/game.js"></script>

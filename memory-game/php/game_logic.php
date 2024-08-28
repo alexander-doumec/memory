@@ -13,8 +13,8 @@ if (isset($_POST['score']) && isset($_SESSION['user_id'])) {
         $db->query("UPDATE users SET total_score = total_score + $score WHERE id = $userId");
         echo json_encode(['success' => true]);
     } else {
-        echo json_encode(['success' => false]);
+        echo json_encode(['success' => false, 'error' => $stmt->error]);
     }
 } else {
-    echo json_encode(['success' => false]);
+    echo json_encode(['success' => false, 'error' => 'Invalid request']);
 }

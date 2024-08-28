@@ -42,7 +42,7 @@ function checkMatch() {
     const [card1, card2] = flippedCards;
     if (card1.dataset.card === card2.dataset.card) {
         score++;
-        message.textContent = `Match found ! Score : ${score}`;
+        message.textContent = `Match found! Score: ${score}`;
         if (score === 3) {
             endGame(true);
         }
@@ -52,7 +52,7 @@ function checkMatch() {
         card2.classList.remove('flipped');
         card1.textContent = '';
         card2.textContent = '';
-        message.textContent = `No correspondance. Remaining attempt : ${3 - attempts}`;
+        message.textContent = `No match. Attempts remaining: ${3 - attempts}`;
         if (attempts === 3) {
             endGame(false);
         }
@@ -63,9 +63,9 @@ function checkMatch() {
 function endGame(isWin) {
     gameBoard.innerHTML = '';
     if (isWin) {
-        message.textContent = 'Congratulations ! You Won !';
+        message.textContent = 'Congratulations! You won!';
     } else {
-        message.textContent = 'Game over. You have lost.';
+        message.textContent = 'Game over. You lost.';
     }
     saveScore();
 }
@@ -81,9 +81,10 @@ function saveScore() {
     .then(response => response.json())
     .then(data => {
         if (data.success) {
-            console.log('Score Saved ');
+            console.log('Score saved');
         }
-    });
+    })
+    .catch(error => console.error('Error:', error));
 }
 
 restartButton.addEventListener('click', () => {

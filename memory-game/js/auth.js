@@ -8,15 +8,19 @@ document.getElementById('loginForm').addEventListener('submit', function(e) {
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
         },
-        body: `username=${username}&password=${password}`
+        body: `username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`
     })
     .then(response => response.json())
     .then(data => {
         if (data.success) {
             window.location.href = 'game.php';
         } else {
-            alert('Échec de la connexion');
+            alert('Login failed');
         }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('An error occurred during login');
     });
 });
 
@@ -25,20 +29,27 @@ document.getElementById('registerForm').addEventListener('submit', function(e) {
     const username = document.getElementById('registerUsername').value;
     const password = document.getElementById('registerPassword').value;
     
+    console.log('Sending registration request...');
+    
     fetch('php/register.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
         },
-        body: `username=${username}&password=${password}`
+        body: `username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`
     })
     .then(response => response.json())
     .then(data => {
+        console.log('Registration response:', data);
         if (data.success) {
-            alert('Register finished. You can know login.');
+            alert('Registration successful. You can now log in.');
             document.getElementById('registerForm').reset();
         } else {
-            alert('Registration failed.');
-            }
+            alert('Registration failed: ' + (data.error || 'Unknown error'));
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('An error occurred during registration');
     });
 });
