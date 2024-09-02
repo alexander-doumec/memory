@@ -1,0 +1,30 @@
+body {
+    background-image: url('memory-game/pictures/background.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.card {
+    width: 100px;
+    height: 150px;
+    margin: 10px;
+    display: inline-block;
+    background-image: url('memory-game/pictures/back.jpg');
+    background-size: cover;
+    cursor: pointer;
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+
+.card.flipped {
+    background-image: none;
+}
+
+.card.flipped img {
+    display: block;
+}
